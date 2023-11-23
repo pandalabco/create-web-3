@@ -16,7 +16,7 @@ const Intro = ({ config }: any) => {
     <motion.section key="main" {...config} className="z-10">
       <div className="section--container">
         <div>
-          <h1>LET'S DO IT.</h1>
+          <h1>{`LET'S DO IT.`}</h1>
         </div>
         <div className="support--content">
           <div>
