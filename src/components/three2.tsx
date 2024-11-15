@@ -1,6 +1,5 @@
 "use client";
-import * as THREE from "three";
-import React, { MutableRefObject, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   useGLTF,
@@ -13,6 +12,7 @@ import {
 } from "@react-three/drei";
 import { easing } from "maath";
 import { useSnapshot } from "valtio";
+import { useScroll } from "framer-motion";
 import state from "@cw3/lib/store";
 
 function Shirt(props: any) {
@@ -108,31 +108,27 @@ function CameraRig({ children }: any) {
 
 function ThreeJs() {
   return (
-    <div className="300vh overflow-scroll bg-slate-500">
-      <div className="100vh">
-        <Canvas
-          shadows
-          gl={{ preserveDrawingBuffer: true }}
-          eventPrefix="client"
-          camera={{ position: [0, 0, 5], fov: 25 }}
-        >
-          <ambientLight intensity={0.5} />
-          <Environment preset="city" />
+    <Canvas
+      shadows
+      gl={{ preserveDrawingBuffer: true }}
+      eventPrefix="client"
+      camera={{ position: [0, 0, 5], fov: 25 }}
+    >
+      <ambientLight intensity={0.5} />
+      <Environment preset="city" />
 
-          {/* 
+      {/* 
         <Environment preset="sunset" />
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
        */}
-          <CameraRig>
-            <Backdrop />
-            <Center>
-              <Shirt />
-            </Center>
-          </CameraRig>
-        </Canvas>
-      </div>
-    </div>
+      <CameraRig>
+        <Backdrop />
+        <Center>
+          <Shirt />
+        </Center>
+      </CameraRig>
+    </Canvas>
   );
 }
 
